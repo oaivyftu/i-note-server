@@ -1,0 +1,40 @@
+{
+  "name": "i-note-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"tsc --watch\" \"nodemon dist\"",
+    "build": "tsc",
+    "lint": "eslint --ext .ts src/**",
+    "lint:fix": "eslint --fix --ext .ts src/**",
+    "format": "prettier --ignore-path .gitignore --write \"src/**/*.+(ts|json)\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.13.0",
+    "@types/validator": "^13.7.12",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.20",
+    "prettier": "2.8.3",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "pg": "^8.9.0",
+    "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.6.0",
+    "sequelize-typescript": "^2.1.5"
+  }
+}
