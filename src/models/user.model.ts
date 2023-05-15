@@ -4,10 +4,8 @@ import {
   Optional,
   ModelScopeOptions,
   ModelValidateOptions,
-  BelongsToGetAssociationMixin,
 } from 'sequelize'
 import { sequelize } from '.'
-import {Note} from "./note.model";
 
 const UserDefinition = {
   id: {
@@ -32,11 +30,11 @@ interface UserAttributes {
   password: string;
 }
 
-export interface UserCreationAttributes
-extends Optional<UserAttributes, 'id'> {}
+export interface UserInput extends Optional<UserAttributes, "id"> {}
+export interface UserOutput extends Required<UserAttributes> {}
 
 export class User
-    extends Model<UserAttributes, UserCreationAttributes>
+    extends Model<UserAttributes, UserInput>
     implements UserAttributes
 {
   public id: number
@@ -51,12 +49,9 @@ export class User
 // Initialization
 User.init(UserDefinition, {
   sequelize,
-  tableName: 'notes',
-  underscored: true,
+  tableName: 'Users',
   updatedAt: true,
   createdAt: true,
   scopes: User.scopes,
   validate: User.validations,
 })
-
-User.hasMany(Note, { as: 'notes' })

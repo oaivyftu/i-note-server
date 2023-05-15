@@ -3,6 +3,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/dist/controllers" />
+      <excludeFolder url="file://$MODULE_DIR$/dist/db" />
+      <excludeFolder url="file://$MODULE_DIR$/dist/models" />
+      <excludeFolder url="file://$MODULE_DIR$/dist/routes" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>

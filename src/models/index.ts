@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize'
 
 const env = process.env.NODE_ENV || 'development'
-const config = require('database.json')[env]
+const config = require('../config/database.json')[env]
 
 const sequelize = config.url
     ? new Sequelize(config.url, config)

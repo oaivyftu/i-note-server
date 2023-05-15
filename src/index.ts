@@ -1,24 +1,18 @@
 import express, { Express, Request, Response } from 'express';
-import { sequelize } from './models'
+import router from "./routes";
+import bodyParser from "body-parser";
 
 const app: Express = express()
 const port = 3001
 
 app.use(express.static(`${__dirname}/public`))
+app.use(bodyParser.json())
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!')
+app.get('/', async(req: Request, res: Response): Promise<Response> => {
+    return res.status(200).send({ message: `Welcome to the inote API! \n Endpoints available at http://localhost:${port}/api/v1` })
 })
 
-app.get('/sync', async (req: Request, res: Response) => {
-    try {
-        await sequelize.sync()
-        res.send('Sync successfully')
-    } catch (e) {
-        console.log(e)
-    }
-
-})
+app.use('/api/v1', router)
 
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`)

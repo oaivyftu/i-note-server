@@ -4,7 +4,6 @@ import {
   Optional,
   ModelScopeOptions,
   ModelValidateOptions,
-  BelongsToGetAssociationMixin,
 } from 'sequelize'
 import { sequelize } from '.'
 import {User} from "./user.model";
@@ -32,11 +31,15 @@ interface NoteAttributes {
   content: string;
 }
 
-export interface NoteCreationAttributes
-    extends Optional<NoteAttributes, 'id'> {}
+export interface NoteInput
+  extends Optional<NoteAttributes, 'id'> {
+  userId: number;
+}
+
+export interface NoteOutput extends Required<NoteAttributes> {}
 
 export class Note
-    extends Model<NoteAttributes, NoteCreationAttributes>
+    extends Model<NoteAttributes, NoteInput>
     implements NoteAttributes
 {
   public id: number
@@ -51,12 +54,11 @@ export class Note
 // Initialization
 Note.init(NoteDefinition, {
   sequelize,
-  tableName: 'notes',
-  underscored: true,
-  updatedAt: true,
-  createdAt: true,
+  tableName: 'Notes',
   scopes: Note.scopes,
   validate: Note.validations,
+  timestamps: true
 })
 
-Note.belongsTo(User, { as: 'user', foreignKey: 'userId' })
+User.hasMany(Note, { foreignKey: 'userId' })
+Note.belongsTo(User, { foreignKey: 'userId' })
