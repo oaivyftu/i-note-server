@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "eslint --ext .ts src/**",
     "lint:fix": "eslint --fix --ext .ts src/**",
-    "format": "prettier --ignore-path .gitignore --write \"src/**/*.+(ts|json)\""
+    "beautify": "prettier --ignore-path .gitignore --write \"src/**/*.+(ts|json)\""
   },
   "keywords": [],
   "author": "",
