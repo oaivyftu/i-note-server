@@ -22,6 +22,10 @@ const NoteDefinition = {
   text: {
     allowNull: false,
     type: DataTypes.STRING,
+  },
+  userId: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
   }
 }
 
@@ -29,6 +33,7 @@ interface NoteAttributes {
   id: number;
   text: string;
   content: string;
+  userId: number;
 }
 
 export interface NoteInput
@@ -45,6 +50,7 @@ export class Note
   public id: number
   public text: string;
   public content: string;
+  public userId: number;
 
   static readonly scopes: ModelScopeOptions = {}
 

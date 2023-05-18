@@ -1,10 +1,13 @@
 import express, { Express, Request, Response } from 'express';
 import router from "./routes";
 import bodyParser from "body-parser";
+import cors from 'cors'
+import 'dotenv/config'
 
 const app: Express = express()
 const port = 3001
 
+app.use(cors())
 app.use(express.static(`${__dirname}/public`))
 app.use(bodyParser.json())
 

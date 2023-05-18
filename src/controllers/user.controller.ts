@@ -1,18 +1,24 @@
 import { User, UserInput, UserOutput } from "../models/user.model";
+import bcrypt from 'bcryptjs'
+import jwt from "jsonwebtoken";
 
 export default {
-  async getUser(payload: UserInput): Promise<User | null> {
-    const { username, password } = payload
+  async getUser(payload: Pick<UserInput, "username">): Promise<User | null> {
+    const { username } = payload
     const userOpt = {
       where: {
-        username,
-        password
+        username
       },
-      attributes: ["username", "password"]
+      attributes: ["id", "username", "password"]
     }
     return await User.findOne(userOpt)
   },
-  async create(payload: UserInput): Promise<UserOutput>{
-    return await User.create(payload)
+  async create(payload: UserInput): Promise<UserOutput | unknown> {
+    try {
+      return await User.create(payload)
+    } catch (e) {
+      const error = e as Error
+      throw Error(error.message)
+    }
   }
 }

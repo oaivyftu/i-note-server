@@ -2,13 +2,15 @@ import { Note, NoteInput, NoteOutput } from "../models/note.model";
 
 export default {
   async getAll(userId: number) {
-    const noteOpt = {
+    return await Note.findAll({
+      order: [
+        ['updatedAt', 'DESC']
+      ],
       where: {
         userId
       },
       attributes: ["id", "content", "text", "createdAt", "updatedAt"]
-    }
-    return await Note.findAll(noteOpt)
+    })
   },
   async create(payload: NoteInput): Promise<NoteOutput>{
     return await Note.create(payload)

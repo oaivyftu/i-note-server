@@ -6,16 +6,14 @@ import noteController from "../controllers/note.controller";
 const noteRouter = Router()
 
 noteRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {
-  const notes = await NoteController.getAll(2)
+  const { userId } = req.query
+  const notes = await NoteController.getAll(Number(userId))
 
   res.status(200).send(notes)
 })
 
 noteRouter.post('/', async (req: Request, res: Response, next: NextFunction) => {
-  const payload: NoteInput = {
-    ...req.body,
-    userId: 2
-  }
+  const payload: NoteInput = req.body
 
   const result = await NoteController.create(payload)
   return res.status(201).send(result)
