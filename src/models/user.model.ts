@@ -4,8 +4,8 @@ import {
   Optional,
   ModelScopeOptions,
   ModelValidateOptions,
-} from 'sequelize'
-import { sequelize } from '.'
+} from "sequelize";
+import { sequelize } from ".";
 
 const UserDefinition = {
   id: {
@@ -21,8 +21,8 @@ const UserDefinition = {
   password: {
     allowNull: false,
     type: DataTypes.STRING,
-  }
-}
+  },
+};
 
 interface UserAttributes {
   id: number;
@@ -30,28 +30,25 @@ interface UserAttributes {
   password: string;
 }
 
-export interface UserInput extends Optional<UserAttributes, "id"> {}
-export interface UserOutput extends Required<UserAttributes> {}
+export type UserInput = Optional<UserAttributes, "id">;
+export type UserOutput = Required<UserAttributes>;
 
-export class User
-    extends Model<UserAttributes, UserInput>
-    implements UserAttributes
-{
-  public id: number
+export class User extends Model<UserAttributes, UserInput> implements UserAttributes {
+  public id: number;
   public username: string;
   public password: string;
 
-  static readonly scopes: ModelScopeOptions = {}
+  static readonly scopes: ModelScopeOptions = {};
 
-  static readonly validations: ModelValidateOptions = {}
+  static readonly validations: ModelValidateOptions = {};
 }
 
 // Initialization
 User.init(UserDefinition, {
   sequelize,
-  tableName: 'Users',
+  tableName: "Users",
   updatedAt: true,
   createdAt: true,
   scopes: User.scopes,
   validate: User.validations,
-})
+});

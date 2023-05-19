@@ -4,9 +4,9 @@ import {
   Optional,
   ModelScopeOptions,
   ModelValidateOptions,
-} from 'sequelize'
-import { sequelize } from '.'
-import {User} from "./user.model";
+} from "sequelize";
+import { User } from "./user.model";
+import { sequelize } from ".";
 
 const NoteDefinition = {
   id: {
@@ -26,8 +26,8 @@ const NoteDefinition = {
   userId: {
     allowNull: false,
     type: DataTypes.INTEGER,
-  }
-}
+  },
+};
 
 interface NoteAttributes {
   id: number;
@@ -36,35 +36,31 @@ interface NoteAttributes {
   userId: number;
 }
 
-export interface NoteInput
-  extends Optional<NoteAttributes, 'id'> {
+export interface NoteInput extends Optional<NoteAttributes, "id"> {
   userId: number;
 }
 
-export interface NoteOutput extends Required<NoteAttributes> {}
+export type NoteOutput = Required<NoteAttributes>;
 
-export class Note
-    extends Model<NoteAttributes, NoteInput>
-    implements NoteAttributes
-{
-  public id: number
+export class Note extends Model<NoteAttributes, NoteInput> implements NoteAttributes {
+  public id: number;
   public text: string;
   public content: string;
   public userId: number;
 
-  static readonly scopes: ModelScopeOptions = {}
+  static readonly scopes: ModelScopeOptions = {};
 
-  static readonly validations: ModelValidateOptions = {}
+  static readonly validations: ModelValidateOptions = {};
 }
 
 // Initialization
 Note.init(NoteDefinition, {
   sequelize,
-  tableName: 'Notes',
+  tableName: "Notes",
   scopes: Note.scopes,
   validate: Note.validations,
-  timestamps: true
-})
+  timestamps: true,
+});
 
-User.hasMany(Note, { foreignKey: 'userId' })
-Note.belongsTo(User, { foreignKey: 'userId' })
+User.hasMany(Note, { foreignKey: "userId" });
+Note.belongsTo(User, { foreignKey: "userId" });

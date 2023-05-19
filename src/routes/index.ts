@@ -1,11 +1,11 @@
-import {Router} from "express";
+import { Router } from "express";
+import { verify } from "../middlewares/verify-token";
 import noteRouter from "./note.router";
 import userRouter from "./user.router";
-import { verify } from "../middlewares/verify-token";
 
-const router = Router()
+const router = Router();
 
-router.use('/notes', verify, noteRouter)
-router.use('/auth', userRouter)
+router.use("/notes", verify, noteRouter);
+router.use("/auth", userRouter);
 
-export default router
+export default router;
