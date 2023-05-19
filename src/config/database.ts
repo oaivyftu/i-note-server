@@ -14,10 +14,10 @@ export const objConfig: { [key:string]: any } = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "leoaivy",
+    "password": "7WK8VUOhrjEGduVTefAg4McuYWVj7Mk3",
+    "database": "inote",
+    "host": "postgres://leoaivy:7WK8VUOhrjEGduVTefAg4McuYWVj7Mk3@dpg-chjcn1qk728k56iq66mg-a/inote",
+    "dialect": "postgres"
   }
 }

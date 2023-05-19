@@ -3,9 +3,10 @@ import router from "./routes";
 import bodyParser from "body-parser";
 import cors from 'cors'
 import 'dotenv/config'
+import * as process from "process";
 
 const app: Express = express()
-const port = 3001
+const port = process.env.NODE_ENV === "development" ? 3001 : process.env.PORT || 3001
 
 app.use(cors())
 app.use(express.static(`${__dirname}/public`))
