@@ -7,7 +7,7 @@ import * as process from "process";
 import { sequelize } from "./models";
 
 const app: Express = express()
-const port = process.env.NODE_ENV === "development" ? 3001 : process.env.PORT || 3001
+const port = process.env.NODE_ENV === "development" ? 3001 : process.env.PORT
 
 app.use(cors())
 app.use(express.static(`${__dirname}/public`))

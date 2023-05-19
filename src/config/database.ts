@@ -1,9 +1,9 @@
 export const objConfig: { [key:string]: any } = {
   "development": {
-    "username": "postgres",
-    "password": "abcd1234",
+    "username": "leoaivy",
+    "password": "7WK8VUOhrjEGduVTefAg4McuYWVj7Mk3",
     "database": "inote",
-    "host": "127.0.0.1",
+    "host": "dpg-chjcn1qk728k56iq66mg-a.singapore-postgres.render.com",
     "dialect": "postgres"
   },
   "test": {
@@ -17,7 +17,8 @@ export const objConfig: { [key:string]: any } = {
     "username": "leoaivy",
     "password": "7WK8VUOhrjEGduVTefAg4McuYWVj7Mk3",
     "database": "inote",
-    "host": "postgres://leoaivy:7WK8VUOhrjEGduVTefAg4McuYWVj7Mk3@dpg-chjcn1qk728k56iq66mg-a/inote",
+    "host": "dpg-chjcn1qk728k56iq66mg-a.singapore-postgres.render.com",
     "dialect": "postgres"
   }
 }
+// postgres://leoaivy:7WK8VUOhrjEGduVTefAg4McuYWVj7Mk3@dpg-chjcn1qk728k56iq66mg-a.singapore-postgres.render.com/inote
