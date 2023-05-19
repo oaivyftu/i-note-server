@@ -5,7 +5,6 @@ import UserController from '../controllers/user.controller'
 
 export const loginValidation = async (req: Request, res: Response, next: NextFunction) => {
   const { username, password }: UserInput = req.body;
-  console.log(username, password)
   const user = await UserController.getUser({ username })
   if (user) {
     // checking if the password is correct

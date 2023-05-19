@@ -1,6 +1,4 @@
 import { User, UserInput, UserOutput } from "../models/user.model";
-import bcrypt from 'bcryptjs'
-import jwt from "jsonwebtoken";
 
 export default {
   async getUser(payload: Pick<UserInput, "username">): Promise<User | null> {

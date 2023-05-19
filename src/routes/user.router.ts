@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 import jwt from "jsonwebtoken";
 import UserController from "../controllers/user.controller";
-import { UserInput } from "../models/user.model";
 import { loginValidation } from "../middlewares/login-validation";
 import bcrypt from "bcryptjs";
 
@@ -24,7 +23,8 @@ userRouter.post('/register', async (req: Request, res: Response, next: NextFunct
     const user = await UserController.create({ username, password: hashedPassword })
     res.status(201).send(user)
   } catch (e) {
-    res.status(400).send(e)
+    const error = e as Error
+    res.status(400).send(error.message)
   }
 })
 
