@@ -1,4 +1,4 @@
-{
+export const objConfig: { [key:string]: any } = {
   "development": {
     "username": "postgres",
     "password": "abcd1234",

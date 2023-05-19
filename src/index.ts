@@ -18,5 +18,5 @@ app.get('/', async(req: Request, res: Response): Promise<Response> => {
 app.use('/api/v1', router)
 
 app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${port}`)
+    console.log(`⚡️[server]: Server is running at port ${port}`)
 })
