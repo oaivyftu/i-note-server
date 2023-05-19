@@ -13,7 +13,6 @@ export const verify = (req: Request, res: Response, next: NextFunction) => {
     jwt.verify(token, process.env.JWT_SECRET!);
     next()
   } catch (err) {
-    console.log(err?.message)
     return res.status(400).send('Invalid token!!!')
   }
 }
