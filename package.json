@@ -7,8 +7,9 @@
     "start": "concurrently \"tsc --watch\" \"nodemon dist\"",
     "build": "tsc",
     "lint": "eslint --ext .ts src/**",
-    "lint:fix": "eslint --fix --ext .ts src/**",
-    "beautify": "prettier --ignore-path .gitignore --write \"src/**/*.+(ts|json)\""
+    "lint:fix": "eslint --fix --ext .ts,.tsx \"src/**\"",
+    "beautify": "prettier --ignore-path .gitignore --write \"src/**/*.+(ts|json)\"",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,8 @@
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "nodemon": "^2.0.20",
     "prettier": "2.8.3",
     "typescript": "^4.9.4"
@@ -43,5 +46,15 @@
     "sequelize": "^6.28.0",
     "sequelize-cli": "^6.6.0",
     "sequelize-typescript": "^2.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "npm run lint:fix", "npm run beautify"
+    ]
   }
 }
