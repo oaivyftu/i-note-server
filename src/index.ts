@@ -13,11 +13,9 @@ app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
-  return res
-    .status(200)
-    .send({
-      message: `Welcome to the inote API! \n Endpoints available at http://localhost:${port}/api/v1`,
-    });
+  return res.status(200).send({
+    message: `Welcome to the inote API! \n`,
+  });
 });
 
 app.get("/sync", async (req, res) => {
